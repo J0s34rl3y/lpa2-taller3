@@ -2,6 +2,11 @@
 
 Una [API RESTful](https://aws.amazon.com/es/what-is/restful-api/) para gestionar usuarios, canciones y favoritos. Desarrollada con [FastAPI](https://fastapi.tiangolo.com/), [SQLModel](https://sqlmodel.tiangolo.com/) y [Pydantic](https://docs.pydantic.dev/).
 
+## Autor
+
+**Jose Arley Ramirez**  
+GitHub: [@J0s34rl3y]
+
 ## Descripción
 
 Esta API permite administrar:
@@ -15,18 +20,43 @@ El proyecto incluye una interfaz de documentación interactiva generada automát
 
 ```
 lpa2-taller3
-├──  README.md            # Este archivo, documentación completa del proyecto
-├──  .env                 # Variables de entorno (desarrollo, pruebas, producción)
-├──  .gitignore           # Archivos y directorios a ignorar por Git
-├──  main.py              # Script principal para ejecutar la aplicación
-├──  musica.db            # Base de Datos
-├──  musica_api
-│   ├──  __init__.py      # Inicialización del módulo
-│   └──  *                # Implementación del API
+├──  README.md            # Este archivo, documentación completa del proyecto
+├──  .gitignore           # Archivos y directorios a ignorar por Git
+├──  .pre-commit-config.yaml  # Configuración de hooks pre-commit
+├──  pyproject.toml       # Configuración de herramientas (ruff, black)
+├──  pytest.ini           # Configuración de pytest
+├──  main.py              # Script principal para ejecutar la aplicación
+├──  musica.db            # Base de Datos SQLite
 ├──  requirements.txt     # Dependencias del proyecto
-├──  tests
-│   └──  test_api.py      # Pruebas Unitarias
-└──  utils.py             # Funciones de utilidad
+├──  utils.py             # Funciones de utilidad
+├──  musica_api/          # Módulo principal del API
+│   ├──  __init__.py      # Inicialización del módulo
+│   ├──  config.py        # Configuración de la aplicación
+│   ├──  database.py      # Configuración de base de datos
+│   ├──  crud.py          # Operaciones CRUD
+│   ├──  models/          # Modelos SQLModel
+│   │   ├──  usuario.py
+│   │   ├──  cancion.py
+│   │   └──  favorito.py
+│   ├──  schemas/         # Schemas Pydantic
+│   │   ├──  usuario_schema.py
+│   │   ├──  cancion_schema.py
+│   │   └──  favorito_schema.py
+│   └──  routers/         # Routers FastAPI
+│       ├──  usuarios.py
+│       ├──  canciones.py
+│       └──  favoritos.py
+├──  frontend/            # Interfaz web Flask
+│   ├──  app.py           # Aplicación Flask
+│   └──  templates/       # Templates HTML
+│       ├──  base.html
+│       ├──  index.html
+│       ├──  usuarios.html
+│       ├──  canciones.html
+│       └──  favoritos.html
+└──  tests/               # Pruebas automatizadas
+    ├──  conftest.py      # Fixtures de pytest
+    └──  test_api.py      # Pruebas unitarias
 
 ```
 ## Modelo de Datos
@@ -58,15 +88,17 @@ lpa2-taller3
 1. Clona este repositorio:
 
    ```bash
-   git clone https://github.com/UR-CC/lpa2-taller3.git
+   git clone https://github.com/J0s34rl3y/lpa2-taller3.git
    cd lpa2-taller3
    ```
 
 2. Crea y activa un entorno virtual:
 
    ```bash
-   python -m venv venv
-   source venv/bin/activate
+   python -m venv .venv
+   source .venv/bin/activate  # En Linux/Mac
+   # o
+   .venv\Scripts\activate  # En Windows
    ```
 
 3. Instala las dependencias:
@@ -75,20 +107,46 @@ lpa2-taller3
    pip install -r requirements.txt
    ```
 
-4. Ajusta las variables de entorno, editando el archivo `.env`
+4. Instala los hooks de pre-commit:
+
+   ```bash
+   pre-commit install
+   ```
 
 ## Ejecución
 
-1. Ejecuta la aplicación:
+### Backend (API)
+
+1. Ejecuta el servidor FastAPI:
 
    ```bash
-   uvicorn main:app --reload
+   uvicorn main:app --reload --port 8002
    ```
 
-2. Accede a la aplicación:
-   - API: [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
-   - Documentación *Swagger UI*: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
-   - Documentación *ReDoc*: [http://127.0.0.1:8000/redoc](http://127.0.0.1:8000/redoc)
+2. Accede a la API:
+   - API: [http://127.0.0.1:8002/](http://127.0.0.1:8002/)
+   - Documentación *Swagger UI*: [http://127.0.0.1:8002/docs](http://127.0.0.1:8002/docs)
+   - Documentación *ReDoc*: [http://127.0.0.1:8002/redoc](http://127.0.0.1:8002/redoc)
+
+### Frontend (Interfaz Web)
+
+1. En otra terminal, ejecuta el frontend Flask:
+
+   ```bash
+   cd frontend
+   python app.py
+   ```
+
+2. Accede a la interfaz web:
+   - Frontend: [http://127.0.0.1:5000/](http://127.0.0.1:5000/)
+
+### Pruebas
+
+Ejecuta las pruebas automáticas con pytest:
+
+```bash
+pytest tests/ -v --cov
+```
 
 ## Uso de la API
 
@@ -121,19 +179,35 @@ lpa2-taller3
 
 ## Desarrollo del Taller
 
-1. Ajustar este `README.md` con los datos del Estudiante
+### Características Implementadas
 
-2. Utilizando [DBeaver](https://dbeaver.io/), adiciona 5 usuarios y 10 canciones, directo a las tablas.
+✅ **API RESTful completa** con FastAPI y SQLModel
+✅ **Frontend web** con Flask y Bootstrap 5
+✅ **Pruebas automatizadas** con pytest (66% cobertura)
+✅ **Pre-commit hooks** con ruff, black y pytest
+✅ **Calidad de código** configurada con ruff y black
+✅ **Documentación automática** con Swagger UI y ReDoc
+✅ **Validación de datos** con Pydantic v2
+✅ **Manejo de errores** HTTP apropiados
 
-3. Adicionar `pre-commit` y `workflow` de GitHub Actions para **ruff** *linter* y *formatter*, y para **pytest**.
+### Estado de TODOs
 
-4. Busca todos los comentarios `# TODO` y `# FIXME`, realiza los ajustes necesarios, y ejecuta un `commit` por cada uno. Usa Pydantic para la validación de datos.
+Todos los `# TODO` del código original han sido implementados:
+- ✅ Modelos SQLModel completados (Usuario, Cancion, Favorito)
+- ✅ Schemas Pydantic con validaciones
+- ✅ Operaciones CRUD completas
+- ✅ Routers con todos los endpoints
+- ✅ Tests automatizados funcionando
+- ✅ Validaciones de email, año, etc.
 
-5. Prueba el funcionamiento del API, desde la documentación *Swagger UI* o *ReDoc*.
+### Tecnologías Utilizadas
 
-6. Desarrolla las pruebas automatizadas para verificar el funcionamiento correcto de la API.
-
-7. Implementar dos (2) de las sugerencias que se presentan a continuación.
+- **Backend**: FastAPI 0.115+, SQLModel, Pydantic v2
+- **Frontend**: Flask, Bootstrap 5, Jinja2
+- **Base de datos**: SQLite (desarrollo)
+- **Testing**: pytest, pytest-cov, pytest-asyncio
+- **Calidad**: ruff, black, pre-commit
+- **Documentación**: Swagger UI, ReDoc
 
 ## Sugerencias de Mejora
 
