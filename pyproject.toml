@@ -1,0 +1,17 @@
+[project]
+name = "musica-api"
+version = "1.0.0"
+description = "API RESTful para gestionar usuarios, canciones y favoritos"
+requires-python = ">=3.10"
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]
+ignore = []
+
+[tool.black]
+line-length = 120
+target-version = ["py310"]

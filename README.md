@@ -20,13 +20,13 @@ lpa2-taller3
 ├──  .gitignore           # Archivos y directorios a ignorar por Git
 ├──  main.py              # Script principal para ejecutar la aplicación
 ├──  musica.db            # Base de Datos
-├──  musica_api
-│   ├──  __init__.py      # Inicialización del módulo
-│   └──  *                # Implementación del API
-├── 󰌠 requirements.txt     # Dependencias del proyecto
-├── 󰙨 tests
-│   └──  test_api.py      # Pruebas Unitarias
-└──  utils.py             # Funciones de utilidad
+├──  musica_api
+│   ├──  __init__.py      # Inicialización del módulo
+│   └──  *                # Implementación del API
+├──  requirements.txt     # Dependencias del proyecto
+├──  tests
+│   └──  test_api.py      # Pruebas Unitarias
+└──  utils.py             # Funciones de utilidad
 
 ```
 ## Modelo de Datos

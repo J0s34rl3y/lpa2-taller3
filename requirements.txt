@@ -3,6 +3,7 @@ fastapi
 uvicorn[standard]
 pydantic
 pydantic-settings
+email-validator
 
 # Base de datos y ORM
 sqlmodel
@@ -15,4 +16,14 @@ python-dotenv
 # Testing
 pytest
 pytest-asyncio
+pytest-cov
 httpx
+
+# Calidad de código
+ruff
+black
+pre-commit
+
+# Frontend opcional (Flask)
+flask
+flask-cors
