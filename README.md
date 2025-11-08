@@ -181,24 +181,24 @@ pytest tests/ -v --cov
 
 ### Características Implementadas
 
-✅ **API RESTful completa** con FastAPI y SQLModel
-✅ **Frontend web** con Flask y Bootstrap 5
-✅ **Pruebas automatizadas** con pytest (66% cobertura)
-✅ **Pre-commit hooks** con ruff, black y pytest
-✅ **Calidad de código** configurada con ruff y black
-✅ **Documentación automática** con Swagger UI y ReDoc
-✅ **Validación de datos** con Pydantic v2
-✅ **Manejo de errores** HTTP apropiados
+- **API RESTful completa** con FastAPI y SQLModel
+- **Frontend web** con Flask y Bootstrap 5
+- **Pruebas automatizadas** con pytest (66% cobertura)
+- **Pre-commit hooks** con ruff, black y pytest
+- **Calidad de código** configurada con ruff y black
+- **Documentación automática** con Swagger UI y ReDoc
+- **Validación de datos** con Pydantic v2
+- **Manejo de errores** HTTP apropiados
 
 ### Estado de TODOs
 
 Todos los `# TODO` del código original han sido implementados:
-- ✅ Modelos SQLModel completados (Usuario, Cancion, Favorito)
-- ✅ Schemas Pydantic con validaciones
-- ✅ Operaciones CRUD completas
-- ✅ Routers con todos los endpoints
-- ✅ Tests automatizados funcionando
-- ✅ Validaciones de email, año, etc.
+- Modelos SQLModel completados (Usuario, Cancion, Favorito)
+- Schemas Pydantic con validaciones
+- Operaciones CRUD completas
+- Routers con todos los endpoints
+- Tests automatizados funcionando
+- Validaciones de email, año, etc.
 
 ### Tecnologías Utilizadas
 
