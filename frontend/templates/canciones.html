@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Canciones - API de Música{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Canciones</h2>
+    <a href="{{ url_for('crear_cancion') }}" class="btn btn-success">Crear Canción</a>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Título</th>
+                <th>Artista</th>
+                <th>Álbum</th>
+                <th>Duración</th>
+                <th>Año</th>
+                <th>Género</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if canciones %}
+                {% for cancion in canciones %}
+                <tr>
+                    <td>{{ cancion.id }}</td>
+                    <td>{{ cancion.titulo }}</td>
+                    <td>{{ cancion.artista }}</td>
+                    <td>{{ cancion.album }}</td>
+                    <td>{{ cancion.duracion }}s</td>
+                    <td>{{ cancion.año }}</td>
+                    <td>{{ cancion.genero }}</td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="7" class="text-center">No hay canciones registradas</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

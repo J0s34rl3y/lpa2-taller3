@@ -12,6 +12,7 @@ sqlalchemy
 # Validación y utilidades
 python-multipart
 python-dotenv
+requests
 
 # Testing
 pytest

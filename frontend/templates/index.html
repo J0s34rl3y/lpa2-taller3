@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Inicio - API de Música{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="jumbotron bg-light p-5 rounded">
+            <h1 class="display-4">Bienvenido a la API de Música</h1>
+            <p class="lead">Sistema de gestión de usuarios, canciones y favoritos</p>
+            <hr class="my-4">
+            <p>Utiliza el menú de navegación para acceder a las diferentes secciones.</p>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Usuarios</h5>
+                <p class="card-text">Gestiona los usuarios del sistema.</p>
+                <a href="{{ url_for('listar_usuarios') }}" class="btn btn-primary">Ver Usuarios</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Canciones</h5>
+                <p class="card-text">Administra el catálogo de canciones.</p>
+                <a href="{{ url_for('listar_canciones') }}" class="btn btn-primary">Ver Canciones</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Favoritos</h5>
+                <p class="card-text">Consulta las canciones favoritas.</p>
+                <a href="{{ url_for('listar_favoritos') }}" class="btn btn-primary">Ver Favoritos</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

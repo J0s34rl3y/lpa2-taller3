@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Crear Canción - API de Música{% endblock %}
+
+{% block content %}
+<h2>Crear Nueva Canción</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <form method="POST">
+            <div class="mb-3">
+                <label for="titulo" class="form-label">Título</label>
+                <input type="text" class="form-control" id="titulo" name="titulo" required>
+            </div>
+            <div class="mb-3">
+                <label for="artista" class="form-label">Artista</label>
+                <input type="text" class="form-control" id="artista" name="artista" required>
+            </div>
+            <div class="mb-3">
+                <label for="album" class="form-label">Álbum</label>
+                <input type="text" class="form-control" id="album" name="album" required>
+            </div>
+            <div class="mb-3">
+                <label for="duracion" class="form-label">Duración (segundos)</label>
+                <input type="number" class="form-control" id="duracion" name="duracion" required>
+            </div>
+            <div class="mb-3">
+                <label for="año" class="form-label">Año</label>
+                <input type="number" class="form-control" id="año" name="año" min="1900" max="2025" required>
+            </div>
+            <div class="mb-3">
+                <label for="genero" class="form-label">Género</label>
+                <input type="text" class="form-control" id="genero" name="genero" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Crear</button>
+            <a href="{{ url_for('listar_canciones') }}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</div>
+{% endblock %}
